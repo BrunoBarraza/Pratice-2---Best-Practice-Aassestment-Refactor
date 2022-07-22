@@ -1,25 +1,25 @@
 const path = require("path");
 
 module.exports = {
+  mode: "development",
   entry: "./src/index.ts",
   module: {
     rules: [
-      {
-        test: /\.html$/,
-        use: ["html-loader"],
-      },
       {
         test: /\.ts$/,
         use: "ts-loader",
         include: [path.resolve(__dirname, "src")],
       },
+      {
+        test: /\.scss$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
     ],
   },
-  resolve : {
-    extensions: ['.ts', '.js']
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
   },
   output: {
-    publicPath: "public",
     filename: "bundle.js",
     path: path.resolve(__dirname, "public"),
   },

@@ -2,10 +2,10 @@
   "name": "pratice-2---best-practice-aassestment-refactor",
   "version": "1.0.0",
   "private": true,
-  "description": "The trainee must refactor the diagnostic assessment using typescript, npm, webpack, scss and semantic html, for this case the trainee is required to use Axios for the http requests needed to accomplish the objective of the assessment, also the modal library can be swapped, the trainee can pick the modal library of preference.  At the end of the practice the project must be deployed to GitHub Pages.",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "webpack-dev-server",
+    "start": "webpack serve",
     "build": "webpack"
   },
   "repository": {
@@ -20,8 +20,7 @@
   },
   "homepage": "https://github.com/BrunoBarraza/Pratice-2---Best-Practice-Aassestment-Refactor#readme",
   "devDependencies": {
-    "html-loader": "^4.1.0",
-    "html-webpack-plugin": "^5.5.0",
+    "css-loader": "^6.7.1",
     "sass": "^1.53.0",
     "sass-loader": "^13.0.2",
     "style-loader": "^3.3.1",
@@ -32,6 +31,7 @@
     "webpack-dev-server": "^4.9.3"
   },
   "dependencies": {
-    "axios": "^0.27.2"
+    "axios": "^0.27.2",
+    "node-sass": "^7.0.1"
   }
 }
