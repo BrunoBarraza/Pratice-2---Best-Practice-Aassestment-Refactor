@@ -1,7 +1,7 @@
 import axios from "axios";
 import "./main.scss";
 
-type Countries = {
+interface Country {
   name: string;
   capital: string;
   region: string;
@@ -11,7 +11,7 @@ type Countries = {
 };
 
 type GetCountrysResponse = {
-  data: Countries[];
+  data: Country[];
 };
 
 async function getCountries() {
@@ -19,23 +19,7 @@ async function getCountries() {
     // const data: GetCountriesResponse
     const { data, status } = await axios.get<GetCountrysResponse>("https://restcountries.com/v3.1/all");
 
-    // console.log(JSON.stringify(data, null, 4));
-    let placeholder = document.querySelector("#data-output");
-    let out = "";
-    for (let country of Countries) {
-        out += `
-        <tr>
-            <td>${country.name.official}</td>
-            <td>${country.capital}</td>
-            <td>${country.region}</td>
-            <td>${country.languages}</td>
-            <td>${country.population}</td>
-            <td><img src='${country.flags.png}'></img></td>
-        </tr>
-        `;
-    }
-
-    placeholder.innerHTML = out;
+    console.log(JSON.stringify(data, null, 4));
 
     // response status is: 200
     console.log("Response status is: ", status);
