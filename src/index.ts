@@ -1,39 +1,111 @@
 import axios from "axios";
 import "./main.scss";
 
+axios
+  .get("https://restcountries.com/v3.1/all")
+  .then(function (response) {
+    return response.data.json();
+  })
+  .then(function (countries) {
+    console.log(countries);
+  });
 interface Country {
-  name: string;
-  capital: string;
+  name: Name;
+  tld: string[];
+  cca2: string;
+  ccn3: string;
+  cca3: string;
+  independent: boolean;
+  status: string;
+  unMember: boolean;
+  currencies: Currencies;
+  idd: Idd;
+  capital: string[];
+  altSpellings: string[];
   region: string;
-  language: string;
-  population: number;
+  subregion: string;
+  languages: Languages;
+  translations: { [key: string]: Translation };
+  latlng: number[];
+  landlocked: boolean;
+  area: number;
+  demonyms: Demonyms;
   flag: string;
-};
-
-type GetCountrysResponse = {
-  data: Country[];
-};
-
-async function getCountries() {
-  try {
-    // const data: GetCountriesResponse
-    const { data, status } = await axios.get<GetCountrysResponse>("https://restcountries.com/v3.1/all");
-
-    console.log(JSON.stringify(data, null, 4));
-
-    // response status is: 200
-    console.log("Response status is: ", status);
-
-    return data;
-  } catch (error) {
-    if (axios.isAxiosError(error)) {
-      console.log("error message: ", error.message);
-      return error.message;
-    } else {
-      console.log("unexpected error: ", error);
-      return "An unexpected error ocurred";
-    }
-  }
+  maps: Maps;
+  population: number;
+  car: Car;
+  timezones: string[];
+  continents: string[];
+  flags: CoatOfArms;
+  coatOfArms: CoatOfArms;
+  startOfWeek: string;
+  capitalInfo: CapitalInfo;
+  postalCode: PostalCode;
 }
 
-getCountries();
+export interface CapitalInfo {
+  latlng: number[];
+}
+
+export interface Car {
+  signs: string[];
+  side: string;
+}
+
+export interface CoatOfArms {
+  png: string;
+  svg: string;
+}
+
+export interface Currencies {
+  DKK: Dkk;
+}
+
+export interface Dkk {
+  name: string;
+  symbol: string;
+}
+
+export interface Demonyms {
+  eng: Eng;
+  fra: Eng;
+}
+
+export interface Eng {
+  f: string;
+  m: string;
+}
+
+export interface Idd {
+  root: string;
+  suffixes: string[];
+}
+
+export interface Languages {
+  kal: string;
+}
+
+export interface Maps {
+  googleMaps: string;
+  openStreetMaps: string;
+}
+
+export interface Name {
+  common: string;
+  official: string;
+  nativeName: NativeName;
+}
+
+export interface NativeName {
+  kal: Translation;
+}
+
+export interface Translation {
+  official: string;
+  common: string;
+}
+
+export interface PostalCode {
+  format: string;
+  regex: string;
+}
